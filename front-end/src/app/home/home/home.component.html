@@ -1,0 +1,18 @@
+
+<div class="container" >
+  <ul id="galeria" *ngIf="Filme.length > 0"   >
+    <li *ngFor="let filme of Filme" >
+      <div class="card">
+        <mat-card-subtitle   class="text-subtitle"> {{filme.nome_filme}}
+        </mat-card-subtitle>
+        <figure class="figure">
+          <img class="capa" src="{{filme.foto_capa}}"alt="">
+        </figure>
+        <mat-card-actions>
+          <button mat-button (click)="onFilme(filme.id_filme)">Visitar</button>
+        </mat-card-actions>
+      </div>
+    </li>
+  </ul>
+</div>
+

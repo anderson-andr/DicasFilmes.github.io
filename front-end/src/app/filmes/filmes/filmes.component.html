@@ -1,0 +1,14 @@
+
+<div class="container" >
+  <ul id="galeria" *ngIf="Filme.length">
+    <li *ngFor="let filme  of Filme" >
+      <div class="card">
+        <mat-card-subtitle   class="text-subtitle">aqui
+        </mat-card-subtitle>
+        <figure class="figure">
+          <img class="capa"   src="{{filme.foto_capa}}"alt="">
+        </figure>
+      </div>
+    </li>
+  </ul>
+</div>
