@@ -18,7 +18,7 @@ export class FilmeController {
         const filmeRequest = req.body;
         if(!filmeRequest || !filmeRequest.nome_filme  || !filmeRequest.descricacao || !filmeRequest.foto_capa) {
             return res.status(400).json({
-                Erro:"descrição e/ou preco sao obrigatorios"
+                Erro:"Todos os dados são obrigatorios"
             });    
         }
        
@@ -54,7 +54,7 @@ export class FilmeController {
         const filmeRequest = req.body;
         if(!filmeRequest || !filmeRequest.nome_filme || !filmeRequest.descricacao  || !filmeRequest.foto_capa ) {
             return res.status(400).json({
-                Erro:"descrição e/ou preco sao obrigatorios"
+                Erro:"Todos os dados são obrigatorios"
             });    
         }
     

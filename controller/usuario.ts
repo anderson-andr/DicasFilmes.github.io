@@ -17,7 +17,7 @@ export class UsuarioController {
         const usuarioRequest = req.body;
         if(!usuarioRequest || !usuarioRequest.nome_usuario || !usuarioRequest.email || !usuarioRequest.senha || !usuarioRequest.cpf) {
             return res.status(400).json({
-                Erro:"descrição e/ou preco sao obrigatorios"
+                Erro:"Todos os dados são obrigatorios"
             });    
         }
     
@@ -53,7 +53,7 @@ export class UsuarioController {
         const usuarioRequest = req.body;
         if(!usuarioRequest || !usuarioRequest.nome_usuario || !usuarioRequest.email  || !usuarioRequest.senha || !usuarioRequest.cpf ) {
             return res.status(400).json({
-                Erro:"descrição e/ou preco sao obrigatorios"
+                Erro:"Todos os dados são obrigatorios"
             });    
         }
     
