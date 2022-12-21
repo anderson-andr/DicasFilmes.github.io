@@ -26,7 +26,7 @@ class FilmeController {
             const filmeRequest = req.body;
             if (!filmeRequest || !filmeRequest.nome_filme || !filmeRequest.descricacao || !filmeRequest.foto_capa) {
                 return res.status(400).json({
-                    Erro: "descrição e/ou preco sao obrigatorios"
+                    Erro: "Todos os dados são obrigatorios"
                 });
             }
             const filme = new filme_1.Filme();
@@ -58,7 +58,7 @@ class FilmeController {
             const filmeRequest = req.body;
             if (!filmeRequest || !filmeRequest.nome_filme || !filmeRequest.descricacao || !filmeRequest.foto_capa) {
                 return res.status(400).json({
-                    Erro: "descrição e/ou preco sao obrigatorios"
+                    Erro: "Todos os dados são obrigatorios"
                 });
             }
             yield filmeRepository.update(id, { nome_filme: filmeRequest.nome_filme, descricacao: filmeRequest.descricacao, foto_capa: filmeRequest.foto_capa });

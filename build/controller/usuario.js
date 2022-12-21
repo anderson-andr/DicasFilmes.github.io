@@ -26,7 +26,7 @@ class UsuarioController {
             const usuarioRequest = req.body;
             if (!usuarioRequest || !usuarioRequest.nome_usuario || !usuarioRequest.email || !usuarioRequest.senha || !usuarioRequest.cpf) {
                 return res.status(400).json({
-                    Erro: "descrição e/ou preco sao obrigatorios"
+                    Erro: "Todos os dados são obrigatorios"
                 });
             }
             const usuario = new usuario_1.Usuario();
@@ -58,7 +58,7 @@ class UsuarioController {
             const usuarioRequest = req.body;
             if (!usuarioRequest || !usuarioRequest.nome_usuario || !usuarioRequest.email || !usuarioRequest.senha || !usuarioRequest.cpf) {
                 return res.status(400).json({
-                    Erro: "descrição e/ou preco sao obrigatorios"
+                    Erro: "Todos os dados são obrigatorios"
                 });
             }
             yield usuarioRepository.update(id, { nome_usuario: usuarioRequest.nome_usuario, email: usuarioRequest.email, senha: usuarioRequest.senha, cpf: usuarioRequest.cpf });
