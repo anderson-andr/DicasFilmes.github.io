@@ -23,6 +23,7 @@ let HomeComponent = class HomeComponent {
     ngOnInit() {
         this.filmesService.list().subscribe(res => {
             this.Filme = res;
+            console.log(this.Filme);
         });
     }
     onFilme(id) {

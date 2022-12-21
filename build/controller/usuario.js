@@ -66,5 +66,14 @@ class UsuarioController {
             res.status(201).json(usuario);
         });
     }
+    buscarPorId(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const datasource = yield data_source_1.AppDataSource;
+            const produtoRepository = datasource.getRepository(usuario_1.Usuario);
+            const id = req.params.id;
+            const filme = yield produtoRepository.findOneBy({ id_usuario: id });
+            res.json(filme);
+        });
+    }
 }
 exports.UsuarioController = UsuarioController;

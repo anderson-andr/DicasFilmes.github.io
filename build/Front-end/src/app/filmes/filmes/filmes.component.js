@@ -24,8 +24,8 @@ let FilmesComponent = class FilmesComponent {
         this.router = router;
         this.route = route;
         this.displayedColumns = ['nome_filme', "foto_capa"];
-        this.Filmes = [];
-        this.filmes$ = this.filmesService.loadById().pipe((0, rxjs_1.catchError)(error => {
+        this.Filme = [];
+        this.filmes$ = this.filmesService.list().pipe((0, rxjs_1.catchError)(error => {
             console.log("aqui");
             this.onErro('Erro ao carregar. ');
             return (0, rxjs_1.of)([]);
@@ -38,7 +38,8 @@ let FilmesComponent = class FilmesComponent {
     }
     ngOnInit() {
         this.filmesService.loadById().subscribe(res => {
-            this.Filmes = res;
+            this.Filme = res;
+            console.log(this.Filme);
         });
     }
 };

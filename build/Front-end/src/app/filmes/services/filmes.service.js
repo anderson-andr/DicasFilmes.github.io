@@ -26,7 +26,7 @@ let FilmesService = class FilmesService {
     loadById() {
         let id = window.localStorage.getItem('id');
         return this.httpClient.get(this.API + '/' + id)
-            .pipe((0, rxjs_1.first)(), (0, rxjs_1.tap)((filme) => console.log(filme)));
+            .pipe((0, rxjs_1.first)(), (0, rxjs_1.tap)((filme) => (filme)));
     }
 };
 FilmesService = __decorate([
