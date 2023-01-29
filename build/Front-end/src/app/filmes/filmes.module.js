@@ -26,7 +26,7 @@ FilmesModule = __decorate([
             filmes_routing_module_1.FilmesRoutingModule,
             app_material_module_1.AppMaterialModule,
             shared_module_1.SharedModule,
-            forms_1.ReactiveFormsModule,
+            forms_1.ReactiveFormsModule
         ]
     })
 ], FilmesModule);

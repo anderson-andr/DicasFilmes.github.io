@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of } from 'rxjs';
-import { json } from 'stream/consumers';
 
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
 import { Filme } from '../model/filme';
 import { FilmesService } from '../services/filmes.service';
+
 
 @Component({
   selector: 'app-filmes',
@@ -14,40 +15,45 @@ import { FilmesService } from '../services/filmes.service';
   styleUrls: ['./filmes.component.scss']
 })
 export class FilmesComponent {
-  filmes$: Observable <Filme[]>;
-  displayedColumns = ['nome_filme', "foto_capa"];
   Filme: Filme[] = []
-
+  dangerousVideoUrl: any;
+  videoUrl: any;
   constructor(private  filmesService : FilmesService,
     public dialog:MatDialog,
     private router: Router,
     private route : ActivatedRoute,
+    private sanitizer: DomSanitizer
 
     ) {
     //this.coursesService = new CoursesService();
 
-    this.filmes$ = this.filmesService.list().pipe (
-      catchError (error => {
-        console.log("aqui")
-         this.onErro('Erro ao carregar. ')
-          return  of([])})
 
-    );
   }
    onErro( errorMsg:string) {
     this.dialog.open(ErrorDialogComponent, {
       data:errorMsg
     });
   }
-
+  idFilme: any;
+  filme_encontrado:any;
   ngOnInit(): void {
-    this.filmesService.loadById().subscribe(res => {
-        this.Filme = res
-        console.log(this.Filme)
+
+    this.route.paramMap.subscribe(res => {
+       this.idFilme = res.get('id')
+    });
+
+    this.FilmebyId(this.idFilme);
+  }
 
 
-    })
-
+  FilmebyId(id: string) {
+    this.filmesService.loadById(id).subscribe((res) => {
+      this.filme_encontrado = res
+      this.dangerousVideoUrl = 'https://www.youtube.com/embed/' + this.filme_encontrado.trailer;
+      this.videoUrl =
+        this.sanitizer.bypassSecurityTrustResourceUrl(this.dangerousVideoUrl);
+      console.log(res)
+  })
 
   }
 

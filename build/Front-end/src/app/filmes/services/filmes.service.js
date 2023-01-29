@@ -21,10 +21,9 @@ let FilmesService = class FilmesService {
     list() {
         return this.httpClient
             .get(this.API)
-            .pipe((0, rxjs_1.first)(), (0, rxjs_1.tap)((filme) => filme));
+            .pipe((0, rxjs_1.first)(), (0, rxjs_1.tap)((filme) => console.log(filme)));
     }
-    loadById() {
-        let id = window.localStorage.getItem('id');
+    loadById(id) {
         return this.httpClient.get(this.API + '/' + id)
             .pipe((0, rxjs_1.first)(), (0, rxjs_1.tap)((filme) => (filme)));
     }

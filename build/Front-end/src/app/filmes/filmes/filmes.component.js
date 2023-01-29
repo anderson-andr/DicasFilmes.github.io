@@ -13,7 +13,6 @@ exports.FilmesComponent = void 0;
 const core_1 = require("@angular/core");
 const dialog_1 = require("@angular/material/dialog");
 const router_1 = require("@angular/router");
-const rxjs_1 = require("rxjs");
 const error_dialog_component_1 = require("../../shared/components/error-dialog/error-dialog.component");
 const filmes_service_1 = require("../services/filmes.service");
 let FilmesComponent = class FilmesComponent {
@@ -23,13 +22,7 @@ let FilmesComponent = class FilmesComponent {
         this.dialog = dialog;
         this.router = router;
         this.route = route;
-        this.displayedColumns = ['nome_filme', "foto_capa"];
         this.Filme = [];
-        this.filmes$ = this.filmesService.list().pipe((0, rxjs_1.catchError)(error => {
-            console.log("aqui");
-            this.onErro('Erro ao carregar. ');
-            return (0, rxjs_1.of)([]);
-        }));
     }
     onErro(errorMsg) {
         this.dialog.open(error_dialog_component_1.ErrorDialogComponent, {
@@ -37,9 +30,15 @@ let FilmesComponent = class FilmesComponent {
         });
     }
     ngOnInit() {
-        this.filmesService.loadById().subscribe(res => {
-            this.Filme = res;
-            console.log(this.Filme);
+        this.route.paramMap.subscribe(res => {
+            this.idFilme = res.get('id');
+        });
+        this.FilmebyId(this.idFilme);
+    }
+    FilmebyId(id) {
+        this.filmesService.loadById(id).subscribe((res) => {
+            this.filme_encontrado = res;
+            console.log(res);
         });
     }
 };

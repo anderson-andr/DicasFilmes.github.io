@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { first, identity, tap } from 'rxjs';
+import { first,  tap } from 'rxjs';
 import { Filme } from '../../../../../src/entity/filme';
 
 
@@ -19,21 +19,22 @@ export class FilmesService {
 
 
   list() {
-
     return this.httpClient
       .get<Filme[]>(this.API )
       .pipe(
         first(),
-        tap((filme) => filme)
+        tap((filme) => console.log(filme))
       );
   }
-  loadById() {
-    let id = window.localStorage.getItem('id')
+  loadById(id:any) {
     return this.httpClient.get<Filme[]>(this.API + '/' + id)
     .pipe(
       first(),
       tap((filme) => (filme))
     );
   }
+
+
+
 
 }

@@ -1,15 +1,15 @@
 
 <div class="container" >
+  <h2>Dicas de filmes </h2>
   <ul id="galeria" *ngIf="Filme.length > 0"   >
     <li *ngFor="let filme of Filme" >
       <div class="card">
-        <mat-card-subtitle   class="text-subtitle"> {{filme.nome_filme}}
-        </mat-card-subtitle>
+          <h3>{{filme.nome_filme}} </h3> 
         <figure class="figure">
           <img class="capa" src="{{filme.foto_capa}}"alt="">
         </figure>
         <mat-card-actions>
-          <button mat-button (click)="onFilme(filme.id_filme)">Visitar</button>
+          <button mat-button routerLink="/filme/{{filme.id_filme}}">Detalhes</button>
         </mat-card-actions>
       </div>
     </li>

@@ -14,7 +14,7 @@ rota.get('/:id',controller.buscarPorId);
 rota.delete('/:id', controller.delete);
 rota.put('/:id', controller.update);
 
-rota.get('lista/:id', controller.listar_Filmes_byUser);
+rota.get('/lista/:id', controller.listar_Filmes_byUser);
 
 
 export default rota;

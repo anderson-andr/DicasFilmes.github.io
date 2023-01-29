@@ -19,6 +19,8 @@ const corsOptions = {
 import rotaUsuario from '../rotas/usuario';
 import rotaFilme from '../rotas/filme';
 
+import rotaAtor from '../rotas/atores';
+
 const app = express();
 const PORT = 3000;
 
@@ -32,6 +34,7 @@ app.use(express.urlencoded({extended:true}));
 app.use('/api/usuario', rotaUsuario);
 
 app.use('/api/filme', rotaFilme);
+app.use('/api/ator', rotaAtor);
 
 app.listen(PORT, () => {
     console.log("Iniciando na porta "+PORT);

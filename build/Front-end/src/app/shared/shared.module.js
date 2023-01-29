@@ -11,6 +11,7 @@ const common_1 = require("@angular/common");
 const core_1 = require("@angular/core");
 const app_material_module_1 = require("./app-material/app-material.module");
 const error_dialog_component_1 = require("./components/error-dialog/error-dialog.component");
+const menu_1 = require("@angular/material/menu");
 let SharedModule = class SharedModule {
 };
 SharedModule = __decorate([
@@ -20,7 +21,8 @@ SharedModule = __decorate([
         ],
         imports: [
             common_1.CommonModule,
-            app_material_module_1.AppMaterialModule
+            app_material_module_1.AppMaterialModule,
+            menu_1.MatMenuModule
         ],
         exports: [
             error_dialog_component_1.ErrorDialogComponent

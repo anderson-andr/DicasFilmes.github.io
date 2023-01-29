@@ -18,6 +18,12 @@ export class Filme extends BaseEntity{
     @Column()
     descricacao!: string;
 
+    
+    @Column()
+    trailer!: string;
+    
+
+
 
 
     

@@ -33,12 +33,16 @@ exports.AppRoutingModule = void 0;
 const core_1 = require("@angular/core");
 const router_1 = require("@angular/router");
 const routes = [
+    { path: '', pathMatch: 'full', redirectTo: 'home' },
     { path: 'home',
         loadChildren: () => Promise.resolve().then(() => __importStar(require('./home/home.module'))).then(m => m.HomeModule)
     },
-    { path: 'filme',
-        loadChildren: () => Promise.resolve().then(() => __importStar(require('./filmes/filmes.module'))).then(m => m.FilmesModule)
+    { path: 'cadastros',
+        loadChildren: () => Promise.resolve().then(() => __importStar(require('./cadastros/cadastros.module'))).then(m => m.CadastrosModule)
     },
+    { path: 'filme/:id',
+        loadChildren: () => Promise.resolve().then(() => __importStar(require('./filmes/filmes.module'))).then(m => m.FilmesModule)
+    }
 ];
 let AppRoutingModule = class AppRoutingModule {
 };

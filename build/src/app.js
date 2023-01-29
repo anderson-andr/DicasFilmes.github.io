@@ -24,6 +24,7 @@ const corsOptions = {
 };
 const usuario_1 = __importDefault(require("../rotas/usuario"));
 const filme_1 = __importDefault(require("../rotas/filme"));
+const atores_1 = __importDefault(require("../rotas/atores"));
 const app = (0, express_1.default)();
 const PORT = 3000;
 app.use(cors(corsOptions));
@@ -31,6 +32,7 @@ app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use('/api/usuario', usuario_1.default);
 app.use('/api/filme', filme_1.default);
+app.use('/api/ator', atores_1.default);
 app.listen(PORT, () => {
     console.log("Iniciando na porta " + PORT);
 });

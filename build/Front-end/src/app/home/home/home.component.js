@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HomeComponent = void 0;
 const core_1 = require("@angular/core");
-const filmes_service_1 = require("../../filmes/services/filmes.service");
 const router_1 = require("@angular/router");
+const filmes_service_1 = require("../../filmes/services/filmes.service");
 let HomeComponent = class HomeComponent {
     constructor(filmesService, router, route) {
         this.filmesService = filmesService;
@@ -35,7 +35,7 @@ HomeComponent = __decorate([
     (0, core_1.Component)({
         selector: 'app-home',
         templateUrl: './home.component.html',
-        styleUrls: ['./home.component.scss']
+        styleUrls: ['./home.component.scss'],
     }),
     __metadata("design:paramtypes", [filmes_service_1.FilmesService,
         router_1.Router,

@@ -16,7 +16,7 @@ export class FilmeController {
 
     async inserir ( req:Request, res: any) {
         const filmeRequest = req.body;
-        if(!filmeRequest || !filmeRequest.nome_filme  || !filmeRequest.descricacao || !filmeRequest.foto_capa) {
+        if(!filmeRequest || !filmeRequest.nome_filme  || !filmeRequest.descricacao || !filmeRequest.foto_capa || !filmeRequest.trailer) {
             return res.status(400).json({
                 Erro:"Todos os dados são obrigatorios"
             });    
@@ -27,6 +27,7 @@ export class FilmeController {
         filme.id_usuario = filmeRequest.id_usuario;
         filme.descricacao = filmeRequest.descricacao;
         filme.foto_capa = filmeRequest.foto_capa;
+        filme.trailer = filmeRequest.trailer;
         const datasource = await AppDataSource;
         
         const filmeRepository = datasource.getRepository(Filme);
@@ -42,8 +43,10 @@ export class FilmeController {
 
         const id = req.params.id;
         const filme = await filmeRepository.findOneBy({id_filme:id});
+
+        
          await filmeRepository.delete({id_filme:id});
-            res.status(201).json({ServicoDeletado:filme});
+            res.status(201).json({FilmeDelatado:filme});
     }
 
     async update (req: any, res: any) {
@@ -52,13 +55,13 @@ export class FilmeController {
 
         const id = req.params.id;
         const filmeRequest = req.body;
-        if(!filmeRequest || !filmeRequest.nome_filme || !filmeRequest.descricacao  || !filmeRequest.foto_capa ) {
+        if(!filmeRequest || !filmeRequest.nome_filme || !filmeRequest.descricacao  || !filmeRequest.foto_capa || !filmeRequest.trailer) {
             return res.status(400).json({
                 Erro:"Todos os dados são obrigatorios"
             });    
         }
     
-        await filmeRepository.update(id, {nome_filme:filmeRequest.nome_filme, descricacao:filmeRequest.descricacao, foto_capa:filmeRequest.foto_capa});
+        await filmeRepository.update(id, {nome_filme:filmeRequest.nome_filme, descricacao:filmeRequest.descricacao, foto_capa:filmeRequest.foto_capa, trailer :filmeRequest.trailer});
         const filme = await filmeRepository.findOneBy({id_filme:id});
             res.status(201).json(filme);
     }

@@ -24,7 +24,7 @@ class FilmeController {
     inserir(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const filmeRequest = req.body;
-            if (!filmeRequest || !filmeRequest.nome_filme || !filmeRequest.descricacao || !filmeRequest.foto_capa) {
+            if (!filmeRequest || !filmeRequest.nome_filme || !filmeRequest.descricacao || !filmeRequest.foto_capa || !filmeRequest.trailer) {
                 return res.status(400).json({
                     Erro: "Todos os dados são obrigatorios"
                 });
@@ -34,6 +34,7 @@ class FilmeController {
             filme.id_usuario = filmeRequest.id_usuario;
             filme.descricacao = filmeRequest.descricacao;
             filme.foto_capa = filmeRequest.foto_capa;
+            filme.trailer = filmeRequest.trailer;
             const datasource = yield data_source_1.AppDataSource;
             const filmeRepository = datasource.getRepository(filme_1.Filme);
             const filmeSalvo = yield filmeRepository.save(filme);
@@ -47,7 +48,7 @@ class FilmeController {
             const id = req.params.id;
             const filme = yield filmeRepository.findOneBy({ id_filme: id });
             yield filmeRepository.delete({ id_filme: id });
-            res.status(201).json({ ServicoDeletado: filme });
+            res.status(201).json({ FilmeDelatado: filme });
         });
     }
     update(req, res) {
@@ -56,12 +57,12 @@ class FilmeController {
             const filmeRepository = datasource.getRepository(filme_1.Filme);
             const id = req.params.id;
             const filmeRequest = req.body;
-            if (!filmeRequest || !filmeRequest.nome_filme || !filmeRequest.descricacao || !filmeRequest.foto_capa) {
+            if (!filmeRequest || !filmeRequest.nome_filme || !filmeRequest.descricacao || !filmeRequest.foto_capa || !filmeRequest.trailer) {
                 return res.status(400).json({
                     Erro: "Todos os dados são obrigatorios"
                 });
             }
-            yield filmeRepository.update(id, { nome_filme: filmeRequest.nome_filme, descricacao: filmeRequest.descricacao, foto_capa: filmeRequest.foto_capa });
+            yield filmeRepository.update(id, { nome_filme: filmeRequest.nome_filme, descricacao: filmeRequest.descricacao, foto_capa: filmeRequest.foto_capa, trailer: filmeRequest.trailer });
             const filme = yield filmeRepository.findOneBy({ id_filme: id });
             res.status(201).json(filme);
         });

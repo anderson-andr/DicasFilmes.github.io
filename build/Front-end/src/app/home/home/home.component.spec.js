@@ -10,11 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const testing_1 = require("@angular/core/testing");
+const node_test_1 = require("node:test");
 const home_component_1 = require("./home.component");
 describe('HomeComponent', () => {
     let component;
     let fixture;
-    beforeEach(() => __awaiter(void 0, void 0, void 0, function* () {
+    (0, node_test_1.beforeEach)(() => __awaiter(void 0, void 0, void 0, function* () {
         yield testing_1.TestBed.configureTestingModule({
             declarations: [home_component_1.HomeComponent]
         })

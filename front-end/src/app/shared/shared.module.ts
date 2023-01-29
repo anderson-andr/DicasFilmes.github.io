@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppMaterialModule } from './app-material/app-material.module';
 import { ErrorDialogComponent } from './components/error-dialog/error-dialog.component';
-
+import {MatMenuModule} from '@angular/material/menu'
 
 
 
@@ -14,7 +14,8 @@ import { ErrorDialogComponent } from './components/error-dialog/error-dialog.com
   ],
   imports: [
     CommonModule,
-    AppMaterialModule
+    AppMaterialModule,
+    MatMenuModule
   ],
   exports:[
     ErrorDialogComponent
